@@ -1,0 +1,107 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+.card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-accent-subtle);
+  opacity: 0;
+  transition: var(--transition-smooth);
+  border-radius: inherit;
+}
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-accent-light);
+  transform: translateY(-3px);
+}
+.card:hover::before { opacity: 1; }
+
+.cardPopular {
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-card);
+}
+.cardUrgent {
+  border-color: var(--color-emergency);
+  background: linear-gradient(135deg, #fff 60%, #fff5f5);
+}
+.cardUrgent:hover {
+  border-color: var(--color-emergency-dark);
+  box-shadow: 0 20px 40px -10px rgba(239,68,68,0.15);
+}
+.cardUrgent::before { background: var(--gradient-emergency-subtle); }
+
+.cardHead {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+}
+.icon {
+  font-size: 2rem;
+  flex-shrink: 0;
+  line-height: 1;
+}
+.title {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  line-height: 1.2;
+  margin-bottom: 0.2rem;
+}
+.time {
+  font-size: 0.75rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+.cardUrgent .time { color: var(--color-emergency-dark); }
+
+.description {
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  line-height: 1.65;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.cta {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--color-accent);
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  position: relative;
+  z-index: 1;
+  margin-top: auto;
+}
+.cardUrgent .cta { color: var(--color-emergency-dark); }
+.arrow { transition: var(--transition); }
+.card:hover .arrow { transform: translateX(4px); }
+
+.viewAll {
+  text-align: center;
+  margin-top: 2.5rem;
+}
+
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  { .grid { grid-template-columns: 1fr; } }

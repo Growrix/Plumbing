@@ -1,0 +1,29 @@
+.banner {
+  background: var(--gradient-emergency);
+  color: var(--color-white);
+  font-size: 0.875rem;
+  font-weight: 500;
+  position: sticky;
+  top: 0;
+  z-index: calc(var(--z-sticky) + 10);
+}
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0.65rem var(--container-px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.message { opacity: 0.95; }
+.cta {
+  font-weight: 700;
+  white-space: nowrap;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  opacity: 1;
+  transition: var(--transition);
+}
+.cta:hover { opacity: 0.85; }

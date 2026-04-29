@@ -1,0 +1,138 @@
+.page { }
+
+/* Hero */
+.hero {
+  background: var(--gradient-emergency);
+  color: var(--color-white);
+  padding: 5rem 0 6rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.heroBadge {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.25);
+  padding: 0.4rem 1rem;
+  border-radius: var(--btn-radius-full);
+  font-size: 0.83rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+  line-height: 1.05;
+  position: relative;
+}
+.sub {
+  font-size: 1.15rem;
+  color: rgba(255,255,255,0.75);
+  max-width: 520px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.7;
+  position: relative;
+}
+
+/* Call button */
+.callBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  background: var(--color-white);
+  color: var(--color-emergency-dark);
+  border-radius: var(--card-radius);
+  padding: 1.25rem 2rem;
+  font-weight: 700;
+  box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+  transition: var(--transition-smooth);
+  position: relative;
+  text-decoration: none;
+}
+.callBtn:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.callIcon { font-size: 2rem; }
+.callLabel { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; opacity: 0.6; }
+.callNumber { display: block; font-size: 1.5rem; letter-spacing: -0.02em; }
+.pulse {
+  position: absolute;
+  inset: -4px;
+  border-radius: calc(var(--card-radius) + 4px);
+  border: 2px solid rgba(255,255,255,0.4);
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+.responseClaim {
+  margin-top: 1.5rem;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  position: relative;
+}
+
+/* Steps */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
+}
+.step {
+  text-align: center;
+  padding: 2rem 1.5rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--card-radius);
+}
+.stepIcon { font-size: 2.5rem; margin-bottom: 0.75rem; }
+.stepNum {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-emergency);
+  margin-bottom: 0.75rem;
+  background: var(--color-emergency-light);
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--btn-radius-full);
+}
+.stepTitle {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.stepDesc { font-size: 0.875rem; color: var(--color-text-secondary); line-height: 1.6; }
+
+/* Safety Tips */
+.tips { display: flex; flex-direction: column; gap: 0.85rem; max-width: 640px; margin: 0 auto; }
+.tip {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--btn-radius);
+  font-size: 0.925rem;
+  color: var(--color-text-secondary);
+}
+.tipNum {
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--color-emergency);
+  flex-shrink: 0;
+  min-width: 28px;
+}
+
+@media (max-width: 768px) { .steps { grid-template-columns: 1fr; } }

@@ -1,0 +1,131 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  background: var(--color-white);
+  padding: 2rem;
+  border-radius: var(--card-radius);
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--color-border);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .row { grid-template-columns: 1fr; }
+}
+
+.req {
+  color: var(--color-emergency);
+  margin-left: 0.15rem;
+}
+
+.emergencyNotice {
+  background: var(--color-emergency-light);
+  border-left: 4px solid var(--color-emergency);
+  padding: 0.85rem 1rem;
+  border-radius: var(--btn-radius);
+  color: var(--color-emergency-dark);
+  font-weight: 500;
+}
+
+.emergencyNotice a {
+  color: var(--color-emergency-dark);
+  text-decoration: underline;
+  font-weight: 600;
+}
+
+.urgencyOptions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.urgencyOption {
+  padding: 0.6rem 1rem;
+  border: 1.5px solid var(--color-border-dark);
+  border-radius: var(--btn-radius-full);
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: var(--transition);
+  user-select: none;
+  background: var(--color-white);
+}
+
+.urgencyOption:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.urgencySelected {
+  background: var(--color-accent);
+  color: var(--color-white);
+  border-color: var(--color-accent);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+}
+
+.checkboxLabel input[type="checkbox"] {
+  margin-top: 0.25rem;
+  accent-color: var(--color-accent);
+}
+
+.submitBtn {
+  margin-top: 0.5rem;
+  width: 100%;
+}
+
+.callAlt {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.25rem;
+}
+
+.callAlt a {
+  color: var(--color-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.callAlt a:hover { text-decoration: underline; }
+
+.successState {
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background: var(--color-success-light);
+  border-radius: var(--card-radius);
+  border: 1px solid var(--color-success);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.successState h3 {
+  font-family: var(--font-display);
+  color: var(--color-text-primary);
+  font-size: 1.5rem;
+}
+
+.successState p {
+  color: var(--color-text-secondary);
+  max-width: 28rem;
+}
+
+.successIcon {
+  font-size: 3rem;
+  line-height: 1;
+}
