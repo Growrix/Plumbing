@@ -48,7 +48,7 @@ export default function BookingForm({ defaultType = "" }) {
   return (
     <form className={styles.form} onSubmit={handleSubmit} noValidate>
       {/* Emergency notice */}
-      {form.serviceType === "emergency" && (
+      {form.serviceType === "emergency-plumbing" && (
         <div className={styles.emergencyNotice}>
           🚨 For emergencies, please{" "}
           <a href={siteConfig.contact.phoneHref}>call us directly</a> for the

@@ -186,6 +186,16 @@ ul, ol { list-style: none; }
   color: var(--color-white);
   box-shadow: var(--shadow-btn);
 }
+.btn--accent {
+  background: var(--color-white);
+  color: var(--color-accent-dark);
+  border-color: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 10px 24px rgba(13, 31, 60, 0.12);
+}
+.btn--accent:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 16px 28px rgba(13, 31, 60, 0.16);
+}
 .btn--primary:hover {
   box-shadow: var(--shadow-btn-hover);
   transform: translateY(-1px);

@@ -3,12 +3,12 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { siteConfig } from "@/config/site.config";
-import { navConfig } from "@/config/pages.config";
 import styles from "./Navbar.module.css";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { brand, contact, nav } = siteConfig;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -22,28 +22,28 @@ export default function Navbar() {
         <div className={styles.inner}>
           {/* Logo */}
           <Link href="/" className={styles.logo}>
-            {siteConfig.brand.logo.image ? (
+            {brand.logo.image ? (
               <Image
-                src={siteConfig.brand.logo.image}
-                alt={siteConfig.brand.name}
+                src={brand.logo.image}
+                alt={brand.name}
                 width={120}
                 height={36}
               />
             ) : (
               <span className={styles.logoText}>
-                <span className={styles.logoIcon}>{siteConfig.brand.logo.icon}</span>
-                {siteConfig.brand.logo.text}
+                <span className={styles.logoIcon}>{brand.logo.icon}</span>
+                {brand.logo.text}
               </span>
             )}
           </Link>
 
           {/* Desktop Nav */}
           <nav className={styles.desktopNav}>
-            {navConfig.links.map((link) => (
+            {nav.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`${styles.navLink} ${link.highlight ? styles.navLinkHighlight : ""}`}
+                className={`${styles.navLink} ${link.badge ? styles.navLinkHighlight : ""}`}
               >
                 {link.label}
               </Link>
@@ -52,11 +52,11 @@ export default function Navbar() {
 
           {/* Desktop CTA */}
           <div className={styles.desktopActions}>
-            <a href={siteConfig.contact.phoneHref} className={styles.phoneLink}>
-              📞 {siteConfig.contact.phone}
+            <a href={contact.phoneHref} className={styles.phoneLink}>
+              📞 {contact.phone}
             </a>
-            <Link href={navConfig.ctaButton.href} className="btn btn--accent btn--sm">
-              {navConfig.ctaButton.label}
+            <Link href={nav.cta.href} className="btn btn--accent btn--sm">
+              {nav.cta.label}
             </Link>
           </div>
 
@@ -75,7 +75,7 @@ export default function Navbar() {
         {/* Mobile Menu */}
         {menuOpen && (
           <nav className={styles.mobileMenu}>
-            {navConfig.links.map((link) => (
+            {nav.links.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -86,11 +86,11 @@ export default function Navbar() {
               </Link>
             ))}
             <div className={styles.mobileCTAs}>
-              <a href={siteConfig.contact.phoneHref} className="btn btn--primary btn--lg" style={{width:"100%",justifyContent:"center"}}>
-                📞 {siteConfig.contact.phone}
+              <a href={contact.phoneHref} className="btn btn--primary btn--lg" style={{width:"100%",justifyContent:"center"}}>
+                📞 {contact.phone}
               </a>
-              <Link href={navConfig.ctaButton.href} className="btn btn--accent btn--lg" style={{width:"100%",justifyContent:"center"}}>
-                {navConfig.ctaButton.label}
+              <Link href={nav.cta.href} className="btn btn--accent btn--lg" style={{width:"100%",justifyContent:"center"}}>
+                {nav.cta.label}
               </Link>
             </div>
           </nav>

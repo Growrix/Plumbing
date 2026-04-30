@@ -11,17 +11,17 @@ This document defines the frontend architecture, component strategy, SEO plan, a
 | Route | Page Doc | Status | Priority |
 |---|---|---|---|
 | `/` | [page-home.md](./page-home.md) | ✅ Built | — |
-| `/services` | [page-services-hub.md](./page-services-hub.md) | ❌ Build | P0 |
-| `/services/[slug]` | [page-services-slug.md](./page-services-slug.md) | ❌ Build | P0+P1 |
-| `/about` | [page-about.md](./page-about.md) | ❌ Build | P0 |
-| `/reviews` | [page-reviews.md](./page-reviews.md) | ❌ Build | P0 |
-| `/plans` | [page-plans.md](./page-plans.md) | ❌ Build | P0 |
-| `/booking` | [page-booking.md](./page-booking.md) | ❌ Build | P0/P1 |
+| `/services` | [page-services-hub.md](./page-services-hub.md) | ✅ Built (P0 stub) | P0 |
+| `/services/[slug]` | [page-services-slug.md](./page-services-slug.md) | ✅ Built (P0 stub) | P0+P1 |
+| `/about` | [page-about.md](./page-about.md) | ✅ Built (P0 stub) | P0 |
+| `/reviews` | [page-reviews.md](./page-reviews.md) | ✅ Built (P0 stub) | P0 |
+| `/plans` | [page-plans.md](./page-plans.md) | ✅ Built (P0 stub) | P0 |
+| `/booking` | [page-booking.md](./page-booking.md) | ✅ Built (P0 page, P1 wiring pending) | P0/P1 |
 | `/contact` | [page-contact.md](./page-contact.md) | ✅ Built | — |
 | `/emergency` | [page-emergency.md](./page-emergency.md) | ✅ Built | — |
-| `/careers` | [page-careers.md](./page-careers.md) | ❌ Build | P2 |
-| `/privacy`, `/terms`, `/license` | [page-legal.md](./page-legal.md) | ❌ Build | P2 |
-| `not-found` (404) | [page-not-found.md](./page-not-found.md) | ❌ Build | P0 |
+| `/careers` | [page-careers.md](./page-careers.md) | ✅ Built (P0 stub) | P0 |
+| `/privacy`, `/terms`, `/license` | [page-legal.md](./page-legal.md) | ✅ Built (P0 legal baseline) | P0 |
+| `not-found` (404) | [page-not-found.md](./page-not-found.md) | ✅ Built | P0 |
 
 ---
 
@@ -38,15 +38,14 @@ This document defines the frontend architecture, component strategy, SEO plan, a
 
 | Component | Used On |
 |---|---|
-| `sections/Hero.jsx` | Home; reused/extended for inner pages |
+| `sections/Hero.jsx` | Home |
 | `sections/TrustBar.jsx` | Home, services hub, booking |
 | `sections/CTASection.jsx` | Most inner pages |
-| `sections/Services.jsx` | Home |
-| `sections/ServicesGrid.jsx` | Services hub |
-| `sections/Testimonials.jsx` | Home, reviews page |
+| `sections/ServicesGrid.jsx` | Home featured services |
+| `sections/Testimonials.jsx` | Home |
 | `sections/Plans.jsx` | Home, plans page |
-| `sections/PricingTiers.jsx` | Plans page |
-| `sections/HowItWorks.jsx` | Home, booking page |
+| `sections/Pricing.jsx` | Home, plans page |
+| `sections/HowItWorks.jsx` | Home |
 | `sections/EmergencyBanner.jsx` | Persistent |
 | `features/BookingForm.jsx` | Booking page |
 
@@ -57,7 +56,7 @@ This document defines the frontend architecture, component strategy, SEO plan, a
 | `components/shared/FAQ.jsx` | Accordion FAQ used by service detail + about | P1 |
 | `components/shared/JsonLd.jsx` | `<script type="application/ld+json">` helper | P1 |
 | `components/shared/Breadcrumb.jsx` | Breadcrumb trail for `/services/[slug]` | P1 |
-| `components/legal/LegalPage.jsx` | Layout for privacy/terms/license with token replacement | P2 |
+| `components/legal/LegalPage.jsx` | Layout for privacy/terms/license with token replacement | P0 |
 
 ---
 

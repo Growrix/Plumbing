@@ -2,7 +2,7 @@
 
 **Planning artifact:** [plumbing-template-e2e-plan.md](../plumbing-template-e2e-plan.md)
 **Current phase:** P0 — Kill All 404s
-**Last updated:** 2026-04-30
+**Last updated:** 2026-05-01
 
 ---
 
@@ -15,9 +15,9 @@
 
 > Nothing else builds correctly until this is done.
 
-- [ ] **T0.1** — `config/site.config.js`: Remove `services.items` (old 6-item list). Update `nav.links` hrefs to match the 8 canonical slugs from `servicesConfig`.
-- [ ] **T0.2** — `config/pages.config.js`: Remove `navConfig` export. Remove all hardcoded brand name / phone strings. Reference `siteConfig` for brand values where needed.
-- [ ] **T0.3** — Audit all components for hardcoded strings or imports from the wrong config. Update to correct source.
+- [x] **T0.1** — `config/site.config.js`: Remove `services.items` (old 6-item list). Update `nav.links` hrefs to match the 8 canonical slugs from `servicesConfig`.
+- [x] **T0.2** — `config/pages.config.js`: Remove `navConfig` export. Remove all hardcoded brand name / phone strings. Reference `siteConfig` for brand values where needed.
+- [x] **T0.3** — Audit all components for hardcoded strings or imports from the wrong config. Update to correct source.
 
 **Contracts:** [shared-contracts/README.md](../shared-contracts/README.md)
 
@@ -27,14 +27,14 @@
 
 Build minimal but intentional pages — hero + CTA + body placeholder. No SEO depth yet.
 
-- [ ] **T1.1** — `app/services/page.jsx` — services hub (hero + category filter + service grid + trust bar + CTA)
-- [ ] **T1.2** — `app/services/[slug]/page.jsx` — service detail stub (breadcrumb + hero + highlights + CTA). `generateStaticParams` from `servicesConfig.items`.
-- [ ] **T1.3** — `app/about/page.jsx` — about stub (hero + story + values + CTA)
-- [ ] **T1.4** — `app/reviews/page.jsx` — reviews stub (hero + testimonials grid + CTA)
-- [ ] **T1.5** — `app/plans/page.jsx` — plans stub (hero + pricing tiers + CTA)
-- [ ] **T1.6** — `app/booking/page.jsx` — booking page with existing `BookingForm` component (unwired to API for now)
-- [ ] **T1.7** — `app/careers/page.jsx` + `config/careers.config.js`
-- [ ] **T1.8** — `app/privacy/page.jsx`, `app/terms/page.jsx`, `app/license/page.jsx` + `config/legal.config.js` + `components/legal/LegalPage.jsx`
+- [x] **T1.1** — `app/services/page.jsx` — services hub (hero + category filter + service grid + trust bar + CTA)
+- [x] **T1.2** — `app/services/[slug]/page.jsx` — service detail stub (breadcrumb + hero + highlights + CTA). `generateStaticParams` from `servicesConfig.items`.
+- [x] **T1.3** — `app/about/page.jsx` — about stub (hero + story + values + CTA)
+- [x] **T1.4** — `app/reviews/page.jsx` — reviews stub (hero + testimonials grid + CTA)
+- [x] **T1.5** — `app/plans/page.jsx` — plans stub (hero + pricing tiers + CTA)
+- [x] **T1.6** — `app/booking/page.jsx` — booking page with existing `BookingForm` component (unwired to API for now)
+- [x] **T1.7** — `app/careers/page.jsx` + `config/careers.config.js`
+- [x] **T1.8** — `app/privacy/page.jsx`, `app/terms/page.jsx`, `app/license/page.jsx` + `config/legal.config.js` + `components/legal/LegalPage.jsx`
 
 **Page plans:** [DOC/project-plan/frontend/](../frontend/)
 
@@ -42,7 +42,7 @@ Build minimal but intentional pages — hero + CTA + body placeholder. No SEO de
 
 ### Task 2 — Custom 404 Page
 
-- [ ] **T2.1** — `app/not-found.jsx` — brand-styled 404 with phone CTA, suggested links, home link
+- [x] **T2.1** — `app/not-found.jsx` — brand-styled 404 with phone CTA, suggested links, home link
 
 **Page plan:** [frontend/page-not-found.md](../frontend/page-not-found.md)
 
@@ -51,7 +51,7 @@ Build minimal but intentional pages — hero + CTA + body placeholder. No SEO de
 ### Task 3 — P0 Verification
 
 - [ ] **T3.1** — Run `npm run dev`, manually click every link in header, footer, hero, and section CTAs
-- [ ] **T3.2** — Run `npm run build` — zero errors, zero warnings
+- [x] **T3.2** — Run `npm run build` — zero errors, zero warnings
 - [ ] **T3.3** — Verify all 7 QA Gate 1 checks from [qa/README.md](../qa/README.md)
 - [ ] **T3.4** — Verify all 4 QA Gate 7 config-collision checks
 

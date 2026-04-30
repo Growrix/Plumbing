@@ -5,6 +5,7 @@ import Footer from "@/components/layout/Footer";
 import EmergencyBanner from "@/components/sections/EmergencyBanner";
 
 export const metadata = {
+  metadataBase: new URL(siteConfig.seo.siteUrl),
   title:       siteConfig.seo.defaultTitle,
   description: siteConfig.seo.description,
   keywords:    siteConfig.seo.keywords,

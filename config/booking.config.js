@@ -3,27 +3,26 @@
  * Control form fields, service options, and time slots here.
  */
 
+import { servicesConfig } from "@/config/services.config";
+import { siteConfig } from "@/config/site.config";
+
 export const bookingConfig = {
   page: {
     heading: "Book a Plumber",
     subheading:
       "Fill out the form below and we'll confirm your booking within 15 minutes by phone or text.",
     emergencyNote:
-      "For emergencies, please CALL us directly at (555) 247-8900 for the fastest response.",
+      `For emergencies, please CALL us directly at ${siteConfig.contact.phone} for the fastest response.`,
     successMessage:
       "Thanks! We've received your booking request. Expect a confirmation call or text within 15 minutes.",
   },
 
   // Service type options in the booking dropdown
   serviceOptions: [
-    { value: "emergency", label: "🚨 Emergency — Need help now!" },
-    { value: "drain-cleaning", label: "Drain Cleaning" },
-    { value: "leak-repair", label: "Leak Detection & Repair" },
-    { value: "water-heater", label: "Water Heater Service" },
-    { value: "pipe-services", label: "Pipe Repair / Installation" },
-    { value: "sewer-services", label: "Sewer Line Service" },
-    { value: "bathroom-kitchen", label: "Bathroom / Kitchen Plumbing" },
-    { value: "inspection", label: "Plumbing Inspection" },
+    ...servicesConfig.items.map((service) => ({
+      value: service.slug,
+      label: `${service.icon} ${service.name}`,
+    })),
     { value: "maintenance-plan", label: "Maintenance Plan Inquiry" },
     { value: "other", label: "Other / Not sure" },
   ],
