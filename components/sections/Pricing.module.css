@@ -1,25 +1,26 @@
 .grid {
-	display: grid;
-	grid-template-columns: 1fr;
-	gap: 1.25rem;
-	max-width: 920px;
-	margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap);
 }
 
 .card {
-	padding: 1.5rem;
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	position: relative;
-	overflow: hidden;
-	border-radius: var(--card-radius-lg);
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  transition: var(--transition-smooth);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-card-hover);
+  border-color: var(--color-accent-light);
+  transform: translateY(-3px);
 }
 
 .highlighted {
-	border-color: var(--color-accent);
-	box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-card);
-	background: linear-gradient(180deg, rgba(239, 246, 255, 0.78), rgba(255, 255, 255, 1));
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 1px var(--color-accent), var(--shadow-card);
 }
 
 .badge {
@@ -118,26 +119,8 @@
 	font-size: 0.85rem;
 }
 
-@media (max-width: 640px) {
-	.card {
-		padding: 1.2rem;
-		border-radius: 1.2rem;
-	}
-
-	.tierName {
-		font-size: 1.28rem;
-	}
-
-	.tierTagline {
-		font-size: 1rem;
-	}
-
-	.priceFrom {
-		font-size: 1.6rem;
-	}
-
-	.cta {
-		width: 100%;
-		justify-content: center;
-	}
+@media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 640px)  {
+  .grid { grid-template-columns: 1fr; }
+  .cta { width: 100%; justify-content: center; }
 }
