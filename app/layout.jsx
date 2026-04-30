@@ -2,6 +2,7 @@ import "./globals.css";
 import siteConfig from "@/config/site.config";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import StickyCallButton from "@/components/layout/StickyCallButton";
 import EmergencyBanner from "@/components/sections/EmergencyBanner";
 
 export const metadata = {
@@ -30,6 +31,7 @@ export default function RootLayout({ children }) {
           nav={siteConfig.nav}
         />
         <main>{children}</main>
+        <StickyCallButton />
         <Footer
           brand={siteConfig.brand}
           footer={siteConfig.footer}

@@ -71,7 +71,7 @@ export const homepageConfig = {
     subheading:
       "Book online in 60 seconds or call us now. No waiting, no hassle.",
     primaryCTA: { label: "Book a Service", href: "/contact" },
-    secondaryCTA: { label: "Call (555) 247-8900", href: "tel:+15552478900" },
+    secondaryCTA: { label: `Call ${siteConfig.contact.phone}`, href: siteConfig.contact.phoneHref },
     bgColor: "primary", // "primary" | "accent" | "dark"
   },
 };

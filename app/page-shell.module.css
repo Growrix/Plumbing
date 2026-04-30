@@ -295,6 +295,8 @@
 @media (max-width: 640px) {
   .hero {
     padding: 4rem 0 3rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
   }
 
   .heroActions {
@@ -303,5 +305,35 @@
 
   .heroActions a {
     justify-content: center;
+  }
+
+  .sectionHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .chipRow {
+    margin-inline: -0.15rem;
+    padding-inline: 0.15rem;
+    scrollbar-width: none;
+  }
+
+  .chipRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    padding: 0.78rem 1rem;
+  }
+
+  .cardGrid {
+    gap: 1rem;
+  }
+
+  .card,
+  .roleCard,
+  .emptyState,
+  .banner,
+  .statCard {
+    border-radius: 1.25rem;
   }
 }

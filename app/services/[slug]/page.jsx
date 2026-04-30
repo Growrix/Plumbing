@@ -6,12 +6,30 @@ import siteConfig from "@/config/site.config";
 import CTASection from "@/components/sections/CTASection";
 import styles from "@/app/page-shell.module.css";
 
+function resolveSlug(params) {
+  if (!params) {
+    return "";
+  }
+
+  if (Array.isArray(params.slug)) {
+    return params.slug.join("/");
+  }
+
+  return typeof params.slug === "string" ? params.slug : "";
+}
+
+function getServiceBySlug(params) {
+  const slug = resolveSlug(params);
+
+  return servicesConfig.items.find((item) => item.slug === slug);
+}
+
 export function generateStaticParams() {
   return servicesConfig.items.map((service) => ({ slug: service.slug }));
 }
 
 export function generateMetadata({ params }) {
-  const service = servicesConfig.items.find((item) => item.slug === params.slug);
+  const service = getServiceBySlug(params);
 
   if (!service) {
     return {};
@@ -24,7 +42,7 @@ export function generateMetadata({ params }) {
 }
 
 export default function ServiceDetailPage({ params }) {
-  const service = servicesConfig.items.find((item) => item.slug === params.slug);
+  const service = getServiceBySlug(params);
 
   if (!service) {
     notFound();
