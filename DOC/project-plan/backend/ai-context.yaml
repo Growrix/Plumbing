@@ -1,0 +1,21 @@
+version: 1
+folder: DOC/project-plan/backend/
+purpose: >-
+  Owns backend service decisions for the Plumbing Template. The only backend
+  surface is the Next.js API route for booking form submission.
+  Covers Resend integration, fail-soft strategy, and reliability decisions.
+status: Active
+last_updated: "2026-04-30"
+
+owned_by: backend-system-planner
+contracts_from:
+  - DOC/project-plan/shared-contracts/
+  - DOC/project-plan/api-and-data/
+
+services:
+  - booking_api_route: "app/api/booking/route.js — POST handler"
+  - resend_email: "Optional — fail-soft if unconfigured"
+
+no_queue: true
+no_jobs: true
+no_database: true

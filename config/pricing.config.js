@@ -31,7 +31,7 @@ export const pricingConfig = {
         "90-day parts warranty",
       ],
       excludes: ["Follow-up visits", "Priority scheduling"],
-      cta: { label: "Book Basic Service", href: "/contact" },
+      cta: { label: "Book Basic Service", href: "/booking?tier=basic" },
       note: null,
     },
     {
@@ -52,7 +52,7 @@ export const pricingConfig = {
         "Detailed inspection report",
       ],
       excludes: [],
-      cta: { label: "Book Standard Service", href: "/contact" },
+      cta: { label: "Book Standard Service", href: "/booking?tier=standard" },
       note: "Best for most homeowners",
     },
     {
@@ -73,7 +73,7 @@ export const pricingConfig = {
         "10% off future repairs",
       ],
       excludes: [],
-      cta: { label: "Book Premium Service", href: "/contact" },
+      cta: { label: "Book Premium Service", href: "/booking?tier=premium" },
       note: null,
     },
   ],
@@ -102,7 +102,7 @@ export const pricingConfig = {
           "Free drain treatment (1x/year)",
           "Email & chat support",
         ],
-        cta: { label: "Start Essential Plan", href: "/contact" },
+        cta: { label: "Start Essential Plan", href: "/booking?tier=essential" },
       },
       {
         id: "home-guard",
@@ -123,7 +123,7 @@ export const pricingConfig = {
           "24/7 phone support",
           "Free minor repairs (up to $50 labor)",
         ],
-        cta: { label: "Start HomeGuard Plan", href: "/contact" },
+        cta: { label: "Start HomeGuard Plan", href: "/booking?tier=home-guard" },
       },
       {
         id: "landlord",
@@ -143,7 +143,7 @@ export const pricingConfig = {
           "Dedicated account manager",
           "Invoice & billing management",
         ],
-        cta: { label: "Contact for Property Pro", href: "/contact" },
+        cta: { label: "Contact for Property Pro", href: "/booking?tier=landlord" },
       },
     ],
   },

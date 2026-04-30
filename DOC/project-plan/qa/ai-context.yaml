@@ -1,0 +1,18 @@
+version: 1
+folder: DOC/project-plan/qa/
+purpose: >-
+  Validation strategy, quality gates, Lighthouse targets, link crawl protocol,
+  schema validation, and release readiness criteria for the Plumbing Template.
+status: Active
+last_updated: "2026-04-30"
+
+owned_by: qa-test-release-governor
+
+lighthouse_targets:
+  seo: ">= 95"
+  accessibility: ">= 90"
+  best_practices: ">= 90"
+  performance: ">= 85"
+
+zero_404_gate: true
+zero_build_warnings_gate: true

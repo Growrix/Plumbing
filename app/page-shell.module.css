@@ -1,0 +1,339 @@
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+.hero {
+  background: var(--gradient-hero);
+  color: var(--color-white);
+  padding: 5rem 0 4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before,
+.hero::after {
+  content: "";
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(4px);
+  opacity: 0.28;
+}
+
+.hero::before {
+  width: 18rem;
+  height: 18rem;
+  top: -4rem;
+  right: -2rem;
+  background: rgba(59, 130, 246, 0.28);
+}
+
+.hero::after {
+  width: 14rem;
+  height: 14rem;
+  bottom: -5rem;
+  left: -3rem;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.heroInner {
+  position: relative;
+  z-index: 1;
+  max-width: 52rem;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.9rem;
+  margin-bottom: 1.25rem;
+  border-radius: var(--btn-radius-full);
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.heroTitle {
+  font-family: var(--font-display);
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.98;
+  color: inherit;
+}
+
+.heroSubtitle {
+  margin-top: 1.25rem;
+  max-width: 44rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1.08rem;
+}
+
+.heroActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.sectionHeader {
+  margin-bottom: 2rem;
+}
+
+.sectionHeader h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.6rem);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.75rem;
+}
+
+.sectionHeader p {
+  color: var(--color-text-secondary);
+  max-width: 42rem;
+}
+
+.chipRow {
+  display: flex;
+  gap: 0.75rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  margin-bottom: 2rem;
+}
+
+.chip {
+  padding: 0.7rem 1rem;
+  border-radius: var(--btn-radius-full);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  color: var(--color-text-secondary);
+  font-weight: 600;
+  transition: var(--transition);
+  white-space: nowrap;
+}
+
+.chipActive {
+  border-color: var(--color-accent);
+  background: var(--color-surface-alt);
+  color: var(--color-accent-dark);
+}
+
+.cardGrid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: var(--card-radius-lg);
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-card);
+}
+
+.cardMuted {
+  background: var(--color-surface);
+}
+
+.cardAccent {
+  border-color: rgba(37, 99, 235, 0.24);
+  background: linear-gradient(180deg, rgba(239, 246, 255, 0.9), rgba(255, 255, 255, 1));
+}
+
+.cardTitle {
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cardText {
+  color: var(--color-text-secondary);
+}
+
+.iconBubble {
+  width: 3rem;
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  background: var(--color-surface-alt);
+  font-size: 1.4rem;
+}
+
+.statGrid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+}
+
+.statCard {
+  padding: 1.25rem;
+  border-radius: var(--card-radius);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.statValue {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 2rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.statLabel {
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.twoColumn {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+.stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+
+.listItem {
+  display: flex;
+  gap: 0.8rem;
+  color: var(--color-text-secondary);
+}
+
+.listItem strong {
+  color: var(--color-text-primary);
+}
+
+.eyebrow {
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-accent);
+}
+
+.inlineMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  color: var(--color-text-secondary);
+  font-size: 0.95rem;
+}
+
+.breadcrumbs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-bottom: 1.25rem;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 0.95rem;
+}
+
+.breadcrumbs a:hover {
+  color: var(--color-white);
+}
+
+.emptyState {
+  padding: 2rem;
+  border-radius: var(--card-radius-lg);
+  border: 1px dashed var(--color-border-dark);
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.banner {
+  padding: 1rem 1.25rem;
+  border-radius: var(--card-radius);
+  background: var(--color-emergency-light);
+  color: var(--color-emergency-dark);
+  font-weight: 600;
+  border: 1px solid rgba(220, 38, 38, 0.18);
+}
+
+.roleCard {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  border-radius: var(--card-radius-lg);
+  border: 1px solid var(--color-border);
+  background: var(--color-white);
+  box-shadow: var(--shadow-card);
+}
+
+.legalLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+@media (max-width: 960px) {
+  .twoColumn {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 4rem 0 3rem;
+    border-bottom-left-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
+  }
+
+  .heroActions {
+    flex-direction: column;
+  }
+
+  .heroActions a {
+    justify-content: center;
+  }
+
+  .sectionHeader {
+    margin-bottom: 1.5rem;
+  }
+
+  .chipRow {
+    margin-inline: -0.15rem;
+    padding-inline: 0.15rem;
+    scrollbar-width: none;
+  }
+
+  .chipRow::-webkit-scrollbar {
+    display: none;
+  }
+
+  .chip {
+    padding: 0.78rem 1rem;
+  }
+
+  .cardGrid {
+    gap: 1rem;
+  }
+
+  .card,
+  .roleCard,
+  .emptyState,
+  .banner,
+  .statCard {
+    border-radius: 1.25rem;
+  }
+}

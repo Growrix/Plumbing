@@ -18,6 +18,16 @@ export const testimonialsConfig = {
     ],
   },
 
+  aggregate: {
+    rating: "4.9",
+    count: "2,400+",
+  },
+
+  reviewCta: {
+    label: "Leave a Google Review",
+    href: "https://google.com",
+  },
+
   // ─── Reviews ─────────────────────────────────────────────────────
   reviews: [
     {

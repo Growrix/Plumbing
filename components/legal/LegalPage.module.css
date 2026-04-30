@@ -1,0 +1,50 @@
+.shell {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 4rem var(--container-px) 5rem;
+}
+
+.warning {
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.1rem;
+  border-radius: var(--card-radius);
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  color: #92400e;
+  font-weight: 600;
+}
+
+.header {
+  margin-bottom: 2rem;
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.25rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+  margin-bottom: 0.75rem;
+}
+
+.meta {
+  color: var(--color-text-secondary);
+}
+
+.section {
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--color-border);
+}
+
+.section:first-of-type {
+  border-top: none;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+}
+
+.section p + p {
+  margin-top: 0.9rem;
+}

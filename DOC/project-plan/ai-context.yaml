@@ -1,0 +1,70 @@
+version: 1
+project:
+  name: Plumbing Template
+  type: Next.js 14 App Router static/hybrid site
+  purpose: >-
+    A fully config-driven, rebrandable plumbing business website template.
+    Buyers fork it, edit config/*.js, and ship a real plumbing site without
+    touching components. SEO-grade service pages, booking API, and zero 404s
+    on all shipped routes.
+  status: Stage A documentation complete — ready for Stage B implementation
+  last_updated: "2026-04-30"
+
+canonical_ai_entrypoint: DOC/project-plan/ai-context.yaml
+
+active_e2e_plan: DOC/project-plan/plumbing-template-e2e-plan.md
+
+read_order:
+  - DOC/project-plan/ai-context.yaml
+  - DOC/project-plan/README.md
+  - DOC/project-plan/tasks/ai-context.yaml
+  - DOC/project-plan/tasks/tasks.md
+  - DOC/project-plan/shared-contracts/ai-context.yaml
+  - DOC/project-plan/shared-contracts/README.md
+  - DOC/project-plan/frontend/ai-context.yaml
+  - DOC/project-plan/frontend/frontend-plan.md
+  - DOC/project-plan/api-and-data/ai-context.yaml
+  - DOC/project-plan/backend/ai-context.yaml
+  - DOC/project-plan/security/ai-context.yaml
+  - DOC/project-plan/devops/ai-context.yaml
+  - DOC/project-plan/qa/ai-context.yaml
+
+active_folders:
+  - DOC/project-plan/shared-contracts/
+  - DOC/project-plan/frontend/
+  - DOC/project-plan/api-and-data/
+  - DOC/project-plan/backend/
+  - DOC/project-plan/security/
+  - DOC/project-plan/devops/
+  - DOC/project-plan/qa/
+  - DOC/project-plan/tasks/
+
+excluded_folders:
+  - DOC/project-plan/supabase/      # No Supabase — config-file data only in this template
+  - DOC/project-plan/cms-content-operations/  # No headless CMS — all content lives in config/*.js
+  - DOC/project-plan/admin-dashboard/   # No admin UI — operator edits config files directly
+  - DOC/project-plan/mobile/        # No native mobile scope
+  - DOC/project-plan/analytics/     # Analytics instrumentation deferred to P2
+  - DOC/project-plan/search/        # No search product beyond SEO static indexing
+
+planning_phase: P0  # Active — kill all 404s
+
+stack_decisions:
+  nextjs: "Required now — already in use, App Router"
+  react: "Required now — already in use"
+  typescript: "Excluded — project uses plain JS/JSX"
+  sanity_cms: "Excluded — content lives in config/*.js"
+  supabase: "Excluded — no DB in template scope"
+  postgresql: "Excluded — no DB in template scope"
+  prisma: "Excluded — no ORM needed"
+  lark: "Excluded — not required for template"
+  resend: "Required (P1) — booking email delivery, fail-soft if unconfigured"
+  pusher: "Excluded — no real-time features"
+  s3: "Excluded — no media upload in template scope"
+
+global_invariants:
+  footer_copyright: "© {year} {brand.name}. All rights reserved."
+  brand_source_of_truth: "config/site.config.js — brand.name and brand.phone"
+  service_catalog_source_of_truth: "config/services.config.js — items[].slug"
+  zero_404_rule: "Every link in nav, footer, hero, and section CTAs must resolve"
+  config_only_copy: "No hardcoded visible copy in components — all text from config/*.js"

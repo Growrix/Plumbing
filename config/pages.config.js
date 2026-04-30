@@ -2,18 +2,7 @@
  * PAGES CONFIG
  * Homepage hero, section order, about page, FAQ, and navigation.
  */
-
-// ─── Navigation ────────────────────────────────────────────────────────────
-export const navConfig = {
-  links: [
-    { label: "Services", href: "/services" },
-    { label: "Pricing", href: "/services#pricing" },
-    { label: "Reviews", href: "/reviews" },
-    { label: "About", href: "/about" },
-    { label: "Emergency", href: "/emergency", highlight: true },
-  ],
-  ctaButton: { label: "Book a Service", href: "/contact" },
-};
+import { siteConfig } from "@/config/site.config";
 
 // ─── Homepage ──────────────────────────────────────────────────────────────
 export const homepageConfig = {
@@ -23,9 +12,9 @@ export const homepageConfig = {
     headline: "Plumbing Problems?",
     headlineAccent: "We Fix Them Fast.",
     subheadline:
-      "Licensed plumbers serving Riverside & surrounding areas. We respond in under 60 minutes for emergencies — day or night.",
-    primaryCTA: { label: "Book a Service", href: "/contact" },
-    emergencyCTA: { label: "🚨 Emergency Call", href: "tel:+15552478900" },
+      `Licensed plumbers serving ${siteConfig.brand.serviceArea}. We respond in under 60 minutes for emergencies — day or night.`,
+    primaryCTA: { label: siteConfig.nav.cta.label, href: siteConfig.nav.cta.href },
+    emergencyCTA: { label: "🚨 Emergency Call", href: siteConfig.contact.phoneHref },
     heroImage: "/images/hero-plumber.jpg", // swap path to change image
     trustLine: "Trusted by 12,000+ homeowners · Licensed · Insured · No surprise pricing",
   },
@@ -82,7 +71,7 @@ export const homepageConfig = {
     subheading:
       "Book online in 60 seconds or call us now. No waiting, no hassle.",
     primaryCTA: { label: "Book a Service", href: "/contact" },
-    secondaryCTA: { label: "Call (555) 247-8900", href: "tel:+15552478900" },
+    secondaryCTA: { label: `Call ${siteConfig.contact.phone}`, href: siteConfig.contact.phoneHref },
     bgColor: "primary", // "primary" | "accent" | "dark"
   },
 };
@@ -93,13 +82,13 @@ export const aboutConfig = {
     badge: "Our Story",
     heading: "Built on Trust. Backed by Experience.",
     subheading:
-      "FlowFix Plumbing started in 2008 with one truck and a simple belief: homeowners deserve honest, professional service — without the runaround.",
+      `${siteConfig.brand.name} started in ${siteConfig.brand.founded} with one truck and a simple belief: homeowners deserve honest, professional service — without the runaround.`,
   },
   story: {
     paragraphs: [
       "Our founder, Marcus Lee, started as an apprentice plumber straight out of high school. After 10 years working for corporate plumbing chains, he grew frustrated seeing customers charged hidden fees, given vague quotes, and treated as afterthoughts.",
-      "In 2008, he started FlowFix with a single truck, a hand-painted logo, and a commitment to do things differently: upfront pricing, on-time arrivals, and treating every home like his own.",
-      "Today, FlowFix has grown to a team of 24 licensed technicians serving Riverside County. But the values haven't changed. Every technician goes through background checks, continuous training, and subscribes to our customer promise.",
+      `In ${siteConfig.brand.founded}, he started ${siteConfig.brand.name} with a single truck, a hand-painted logo, and a commitment to do things differently: upfront pricing, on-time arrivals, and treating every home like his own.`,
+      `Today, ${siteConfig.brand.name} has grown to a team of 24 licensed technicians serving ${siteConfig.brand.serviceArea}. But the values haven't changed. Every technician goes through background checks, continuous training, and subscribes to our customer promise.`,
     ],
     image: "/images/about-team.jpg",
   },
@@ -139,6 +128,13 @@ export const aboutConfig = {
       { label: "Ongoing Training", value: "Quarterly" },
     ],
   },
+  certifications: [
+    "Texas Licensed Master Plumber",
+    "EPA Certified",
+    "BBB A+ Rated",
+    "PHCC Member",
+    "HomeAdvisor Elite",
+  ],
 };
 
 // ─── Emergency Page ────────────────────────────────────────────────────────
@@ -149,8 +145,8 @@ export const emergencyConfig = {
     headlineAccent: "We'll Be There in 60 Minutes.",
     subheading:
       "Don't wait. Every minute counts with a burst pipe, major leak, or sewage backup. Call our emergency line — we answer 24/7.",
-    phoneCTA: { label: "Call Now: (555) 247-8900", href: "tel:+15552478900" },
-    bookCTA: { label: "Book Emergency Online", href: "/contact?type=emergency" },
+    phoneCTA: { label: `Call Now: ${siteConfig.contact.phone}`, href: siteConfig.contact.phoneHref },
+    bookCTA: { label: "Book Emergency Online", href: "/booking?service=emergency-plumbing" },
     bgColor: "emergency",
   },
   emergencyTypes: [
@@ -220,7 +216,7 @@ export const faqConfig = {
     },
     {
       q: "What areas do you serve?",
-      a: "We primarily serve Riverside County including Riverside, Corona, Moreno Valley, Perris, Norco, and surrounding communities. Call us to confirm coverage for your address.",
+      a: `We primarily serve ${siteConfig.brand.serviceArea}. Call us to confirm coverage for your address.`,
     },
     {
       q: "What's included in a maintenance plan?",
