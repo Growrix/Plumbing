@@ -1,0 +1,144 @@
+version: 1
+role_system:
+  name: Framework Documentation Roles
+  type: cross-project role library
+  summary: >-
+    Reusable role set for creating AI-readable, enterprise-grade documentation
+    for websites, SaaS platforms, hybrid products, dashboards, commerce flows,
+    and deployment operations.
+  canonical_ai_entrypoint: DOC/framework/roles/ai-context.yaml
+  canonical_human_index: DOC/framework/roles/README.md
+
+prompt_contract:
+  always_reference_first:
+    - DOC/framework/roles/ai-context.yaml
+  minimum_instruction: >-
+    Start with DOC/framework/roles/ai-context.yaml, choose the matching role for the
+    current planning task, and ensure all generated docs include a compact
+    ai-context.yaml, a human README, shared invariants, and minimal read paths.
+<<<<<<< HEAD
+=======
+    If the task starts from DOC/master-plan/plan.md or from an equivalent master-plan
+    brief pasted into chat and DOC/project-plan/ai-context.yaml does not exist yet,
+    treat the work as documentation generation and build the DOC/project-plan root
+    docs plus the downstream role folders before calling the planning complete.
+>>>>>>> frontend
+  workflow_guide:
+    - DOC/framework/roles/documentation-workflow-playbook.md
+
+shared_invariants:
+  - Shared system contracts must exist before independent frontend and backend planning diverge.
+  - AI-readable routing must exist in every documentation folder through ai-context.yaml and README.md.
+  - Server-authoritative flows, permissions, integrations, and state models must not be invented by the frontend role.
+  - Enterprise docs must define loading, empty, success, error, recovery, and permission behavior where relevant.
+  - Build plans should prefer vertical slices with complete contracts over disconnected silo plans.
+  - Testing and quality docs must define explicit pass/fail gates, including mobile, accessibility, performance, and security checks.
+
+quality_protocol:
+  file: DOC/framework/guide/quality/enterprise-testing-and-quality-enforcement-v2.md
+  use_for:
+    - quality gate enforcement
+    - release readiness criteria
+    - test pipeline ordering
+    - failure handling protocol
+
+roles:
+  fullstack_contract_orchestrator:
+    file: DOC/framework/roles/fullstack-contract-orchestrator.md
+    use_for:
+      - system blueprint
+      - cross-team planning
+      - frontend backend alignment
+      - contract-first delivery
+  frontend_uiux_generator:
+    file: DOC/framework/roles/frontend-ui-ux-generator.md
+    use_for:
+      - UI architecture
+      - page planning
+      - design system
+      - component system
+  backend_system_planner:
+    file: DOC/framework/roles/backend-system-planner.md
+    use_for:
+      - backend architecture
+      - service boundaries
+      - common integrations
+      - storage and jobs
+  api_data_contract_architect:
+    file: DOC/framework/roles/api-data-contract-architect.md
+    use_for:
+      - API contracts
+      - schemas
+      - events
+      - status models
+  security_compliance_trust_architect:
+    file: DOC/framework/roles/security-compliance-trust-architect.md
+    use_for:
+      - authorization
+      - tenant isolation
+      - privacy
+      - auditability
+      - compliance
+  devops_reliability_release_planner:
+    file: DOC/framework/roles/devops-reliability-release-planner.md
+    use_for:
+      - deployment
+      - environments
+      - observability
+      - reliability
+      - release control
+  qa_test_release_governor:
+    file: DOC/framework/roles/qa-test-release-governor.md
+    use_for:
+      - testing strategy
+      - release gates
+      - contract verification
+      - end-to-end quality
+
+recommended_sequence:
+  - DOC/framework/roles/fullstack-contract-orchestrator.md
+  - DOC/framework/roles/frontend-ui-ux-generator.md
+  - DOC/framework/roles/backend-system-planner.md
+  - DOC/framework/roles/api-data-contract-architect.md
+  - DOC/framework/roles/security-compliance-trust-architect.md
+  - DOC/framework/roles/devops-reliability-release-planner.md
+  - DOC/framework/roles/qa-test-release-governor.md
+
+shared_output_requirements:
+  mandatory_files:
+    - ai-context.yaml
+    - README.md
+  mandatory_doc_concepts:
+    - product or system summary
+    - invariants
+    - role or surface boundaries
+    - status models
+    - read paths
+    - failure state handling
+    - implementation sequence
+    - testing expectation
+    - quality enforcement gate and completion criteria
+
+task_routing:
+  choose_workflow:
+    role: DOC/framework/roles/documentation-workflow-playbook.md
+  create_site_blueprint:
+    role: DOC/framework/roles/fullstack-contract-orchestrator.md
+  plan_frontend:
+    role: DOC/framework/roles/frontend-ui-ux-generator.md
+  plan_backend:
+    role: DOC/framework/roles/backend-system-planner.md
+  lock_contracts:
+    role: DOC/framework/roles/api-data-contract-architect.md
+  plan_security_and_compliance:
+    role: DOC/framework/roles/security-compliance-trust-architect.md
+  plan_devops_and_release:
+    role: DOC/framework/roles/devops-reliability-release-planner.md
+  plan_test_and_quality:
+    role: DOC/framework/roles/qa-test-release-governor.md
+
+anti_mismatch_rules:
+  - Frontend planners must consume shared contracts before defining server-backed UX behavior.
+  - Backend planners must consume shared contracts before defining APIs, states, or persistence models.
+  - API or schema changes must update both the shared contract and any affected specialized docs.
+  - If the system contract does not exist yet, create it before specialized planning continues.

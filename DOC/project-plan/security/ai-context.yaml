@@ -1,0 +1,20 @@
+version: 1
+folder: DOC/project-plan/security/
+purpose: >-
+  Auth, form security, rate limiting, spam protection, secret handling,
+  and privacy decisions for the Plumbing Template. No user authentication
+  is in scope — the only attack surface is the public booking form.
+status: Active
+last_updated: "2026-04-30"
+
+owned_by: security-compliance-trust-architect
+
+auth: none  # No user accounts; no login; no sessions
+attack_surface: booking_form_only
+
+key_controls:
+  - server_side_validation
+  - honeypot_field
+  - ip_rate_limiting
+  - env_secret_isolation
+  - legal_page_noindex
