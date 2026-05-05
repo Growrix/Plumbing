@@ -92,6 +92,14 @@ export const siteConfig = {
       "Do not use toilets or sinks in the affected area",
     ],
     coverageAreas: ["Parramatta", "Blacktown", "Penrith", "Liverpool", "Campbelltown", "Hornsby", "Chatswood", "Manly", "Bondi", "Newtown", "Strathfield", "Burwood", "Auburn", "Fairfield", "Bankstown", "Hurstville"],
+    emergencyTypes: [
+      { icon: "ZapOff", title: "Burst Pipes", description: "Immediate water shutoff and pipe repair to stop flooding before it causes structural damage." },
+      { icon: "Droplets", title: "Sewage Backups", description: "A serious health hazard — we treat this as highest priority and respond immediately." },
+      { icon: "AlertTriangle", title: "Major Leaks", description: "Uncontrolled leaks causing water damage to walls, floors, or ceilings." },
+      { icon: "Flame", title: "Hot Water Failure", description: "No hot water or water heater leaking — same-day assessment and replacement." },
+      { icon: "Waves", title: "Flooding", description: "Water pooling from a plumbing failure — find and stop the source fast." },
+      { icon: "Wind", title: "Gas Concerns", description: "Smell gas near appliances? Leave home immediately and call us — we're ATCO certified." },
+    ],
   },
   ctaSection: {
     headline: "Ready to Fix It?",

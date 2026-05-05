@@ -1,4 +1,5 @@
-import { Switch, Route, Router as WouterRouter } from "wouter";
+import { Switch, Route, Router as WouterRouter, useLocation } from "wouter";
+import { AnimatePresence, motion } from "framer-motion";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -18,25 +19,42 @@ import NotFoundPage from "@/pages/NotFoundPage";
 
 const queryClient = new QueryClient();
 
+function AnimatedRoutes() {
+  const [location] = useLocation();
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div
+        key={location}
+        initial={{ opacity: 0, y: 6 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -6 }}
+        transition={{ duration: 0.16, ease: "easeInOut" }}
+      >
+        <Switch>
+          <Route path="/" component={HomePage} />
+          <Route path="/services" component={ServicesPage} />
+          <Route path="/services/:slug" component={ServiceDetailPage} />
+          <Route path="/about" component={AboutPage} />
+          <Route path="/reviews" component={ReviewsPage} />
+          <Route path="/plans" component={PlansPage} />
+          <Route path="/emergency" component={EmergencyPage} />
+          <Route path="/booking" component={BookingPage} />
+          <Route path="/contact" component={ContactPage} />
+          <Route path="/careers" component={CareersPage} />
+          <Route path="/privacy">{() => <LegalPage type="privacy" />}</Route>
+          <Route path="/terms">{() => <LegalPage type="terms" />}</Route>
+          <Route path="/license">{() => <LegalPage type="license" />}</Route>
+          <Route component={NotFoundPage} />
+        </Switch>
+      </motion.div>
+    </AnimatePresence>
+  );
+}
+
 function Router() {
   return (
     <RootLayout>
-      <Switch>
-        <Route path="/" component={HomePage} />
-        <Route path="/services" component={ServicesPage} />
-        <Route path="/services/:slug" component={ServiceDetailPage} />
-        <Route path="/about" component={AboutPage} />
-        <Route path="/reviews" component={ReviewsPage} />
-        <Route path="/plans" component={PlansPage} />
-        <Route path="/emergency" component={EmergencyPage} />
-        <Route path="/booking" component={BookingPage} />
-        <Route path="/contact" component={ContactPage} />
-        <Route path="/careers" component={CareersPage} />
-        <Route path="/privacy">{() => <LegalPage type="privacy" />}</Route>
-        <Route path="/terms">{() => <LegalPage type="terms" />}</Route>
-        <Route path="/license">{() => <LegalPage type="license" />}</Route>
-        <Route component={NotFoundPage} />
-      </Switch>
+      <AnimatedRoutes />
     </RootLayout>
   );
 }

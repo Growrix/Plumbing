@@ -9,10 +9,15 @@ import { Button } from "@/components/ui/button";
 
 export default function ReviewsPage() {
   const [activePlatform, setActivePlatform] = useState("all");
+  const [activeService, setActiveService] = useState("all");
 
-  const filteredReviews = activePlatform === "all"
-    ? testimonialsConfig.reviews
-    : testimonialsConfig.reviews.filter(r => r.platform === activePlatform);
+  const uniqueServices = Array.from(new Set(testimonialsConfig.reviews.map(r => r.service))).sort();
+
+  const filteredReviews = testimonialsConfig.reviews.filter(r => {
+    const matchesPlatform = activePlatform === "all" || r.platform === activePlatform;
+    const matchesService = activeService === "all" || r.service === activeService;
+    return matchesPlatform && matchesService;
+  });
 
   return (
     <div className="bg-background">
@@ -48,29 +53,60 @@ export default function ReviewsPage() {
 
       <section className="py-20">
         <div className="container mx-auto px-4">
-          
-          <div className="flex justify-center flex-wrap gap-2 mb-12">
-            <button
-              onClick={() => setActivePlatform("all")}
-              className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
-                activePlatform === "all" ? "bg-accent text-accent-foreground shadow-btn" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
-              }`}
-              data-testid="filter-platform-all"
-            >
-              All Reviews
-            </button>
-            {testimonialsConfig.page.platforms.map(p => (
+
+          <div className="flex flex-col gap-4 items-center mb-12">
+            {/* Platform Filter */}
+            <div className="flex justify-center flex-wrap gap-2">
               <button
-                key={p.name}
-                onClick={() => setActivePlatform(p.name)}
-                className={`px-6 py-2 rounded-full text-sm font-bold transition-all ${
-                  activePlatform === p.name ? "bg-accent text-accent-foreground shadow-btn" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                onClick={() => setActivePlatform("all")}
+                className={`px-5 py-1.5 rounded-full text-sm font-bold transition-all ${
+                  activePlatform === "all" ? "bg-accent text-accent-foreground shadow-btn" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                 }`}
-                data-testid={`filter-platform-${p.name}`}
+                data-testid="filter-platform-all"
               >
-                {p.name}
+                All Platforms
               </button>
-            ))}
+              {testimonialsConfig.page.platforms.map(p => (
+                <button
+                  key={p.name}
+                  onClick={() => setActivePlatform(p.name)}
+                  className={`px-5 py-1.5 rounded-full text-sm font-bold transition-all ${
+                    activePlatform === p.name ? "bg-accent text-accent-foreground shadow-btn" : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
+                  }`}
+                  data-testid={`filter-platform-${p.name}`}
+                >
+                  {p.name}
+                </button>
+              ))}
+            </div>
+
+            {/* Service Type Filter */}
+            <div className="flex justify-center flex-wrap gap-2" data-testid="service-type-filter">
+              <button
+                onClick={() => setActiveService("all")}
+                className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all border ${
+                  activeService === "all" ? "bg-primary text-white border-primary" : "bg-transparent border-border text-muted-foreground hover:border-accent hover:text-accent"
+                }`}
+              >
+                All Services
+              </button>
+              {uniqueServices.map(service => (
+                <button
+                  key={service}
+                  onClick={() => setActiveService(service)}
+                  className={`px-5 py-1.5 rounded-full text-xs font-bold transition-all border ${
+                    activeService === service ? "bg-primary text-white border-primary" : "bg-transparent border-border text-muted-foreground hover:border-accent hover:text-accent"
+                  }`}
+                  data-testid={`filter-service-${service}`}
+                >
+                  {service}
+                </button>
+              ))}
+            </div>
+
+            {filteredReviews.length < testimonialsConfig.reviews.length && (
+              <p className="text-sm text-muted-foreground">Showing {filteredReviews.length} of {testimonialsConfig.reviews.length} reviews</p>
+            )}
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" data-testid="reviews-grid">

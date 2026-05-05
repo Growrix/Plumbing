@@ -2,6 +2,7 @@ import { PhoneCall } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { SEOHead } from "@/components/shared/SEOHead";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
+import { getIcon } from "@/lib/icons";
 import {
   Accordion,
   AccordionContent,
@@ -66,6 +67,42 @@ export default function EmergencyPage() {
               </AnimatedSection>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Emergency Types Grid */}
+      <section className="py-24 bg-background" data-testid="emergency-types">
+        <div className="container mx-auto px-4 max-w-5xl">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-display font-bold mb-4">What Counts as a Plumbing Emergency?</h2>
+            <p className="text-muted-foreground text-lg">These situations need immediate attention — don't wait.</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {siteConfig.emergency.emergencyTypes.map((type, i) => {
+              const Icon = getIcon(type.icon);
+              return (
+                <AnimatedSection key={i} delay={i * 0.08}>
+                  <div className="group bg-card border border-border rounded-2xl p-6 shadow-sm hover:border-red-300 hover:shadow-md transition-all duration-300">
+                    <div className="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center mb-4 group-hover:bg-red-600 group-hover:text-white transition-colors duration-300">
+                      <Icon size={24} />
+                    </div>
+                    <h3 className="font-display font-bold text-lg mb-2">{type.title}</h3>
+                    <p className="text-muted-foreground text-sm leading-relaxed">{type.description}</p>
+                  </div>
+                </AnimatedSection>
+              );
+            })}
+          </div>
+          <AnimatedSection className="text-center mt-12">
+            <p className="text-muted-foreground mb-6">Not sure if it's an emergency? Call us — we'll let you know right away.</p>
+            <a
+              href={siteConfig.emergency.phoneHref}
+              className="inline-flex items-center gap-2 bg-red-600 text-white font-bold px-8 py-4 rounded-full hover:bg-red-700 transition-colors shadow-lg"
+            >
+              <PhoneCall size={20} />
+              {siteConfig.emergency.phoneDisplay}
+            </a>
+          </AnimatedSection>
         </div>
       </section>
 

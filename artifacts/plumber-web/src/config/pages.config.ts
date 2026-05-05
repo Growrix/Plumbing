@@ -23,6 +23,24 @@ export const aboutConfig = {
     { icon: "Award", title: "Quality Guaranteed", description: "Every job is backed by a written workmanship guarantee. We stand behind our work." },
     { icon: "Heart", title: "Community First", description: "We are a Sydney business. We sponsor local junior footy and give back to the communities we serve." },
   ],
+  teamHighlight: {
+    heading: "22 Licensed Plumbers Serving Greater Sydney",
+    subheading: "Every technician on our team holds a current NSW plumbing licence, has passed a background check, and completes quarterly training on codes and safety.",
+    stats: [
+      { label: "Licensed Plumbers", value: "22" },
+      { label: "Avg. Experience", value: "9 yrs" },
+      { label: "Background Checked", value: "100%" },
+      { label: "Training Cycle", value: "Quarterly" },
+    ],
+  },
+  certifications: [
+    "NSW Licensed Master Plumber",
+    "EPA Certified",
+    "NSW Fair Trading Approved",
+    "MPAQ Member",
+    "iCIRT Rated Contractor",
+    "HomeAdvisor Screened",
+  ],
 };
 
 export const careersConfig = {

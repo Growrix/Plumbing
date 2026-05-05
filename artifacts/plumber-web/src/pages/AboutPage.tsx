@@ -99,6 +99,44 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Team Highlight */}
+      <section className="py-24 bg-primary text-white">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <h2 className="text-3xl md:text-5xl font-display font-bold mb-4">{aboutConfig.teamHighlight.heading}</h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">{aboutConfig.teamHighlight.subheading}</p>
+          </AnimatedSection>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto">
+            {aboutConfig.teamHighlight.stats.map((stat, i) => (
+              <AnimatedSection key={i} delay={i * 0.1} className="text-center">
+                <div className="font-display font-extrabold text-4xl text-accent mb-2">{stat.value}</div>
+                <div className="text-sm font-medium text-white/70 uppercase tracking-wider">{stat.label}</div>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-20 bg-secondary">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-12">
+            <h2 className="text-2xl md:text-3xl font-display font-bold mb-4">Licensed, Certified & Insured</h2>
+            <p className="text-muted-foreground">Every ticket, every credential — always current.</p>
+          </AnimatedSection>
+          <div className="flex flex-wrap justify-center gap-3 max-w-3xl mx-auto" data-testid="certifications">
+            {aboutConfig.certifications.map((cert, i) => (
+              <AnimatedSection key={i} delay={i * 0.05} className="inline-block">
+                <span className="flex items-center gap-2 bg-card border border-border text-foreground font-semibold text-sm px-5 py-2.5 rounded-full shadow-sm">
+                  <span className="text-accent">✓</span>
+                  {cert}
+                </span>
+              </AnimatedSection>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <CTASection 
         headline={siteConfig.ctaSection.headline}
         subheadline={siteConfig.ctaSection.subheadline}

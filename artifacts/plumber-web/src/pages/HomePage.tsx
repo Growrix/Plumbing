@@ -238,52 +238,81 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Maintenance Plans */}
-      <section className="py-24 bg-primary" aria-labelledby="plans-heading" data-testid="plans-section">
+      {/* Maintenance Plans Promo */}
+      <section className="py-24 bg-primary overflow-hidden" aria-labelledby="plans-heading" data-testid="plans-section">
         <div className="container mx-auto px-4">
-          <AnimatedSection className="text-center mb-16">
-            <span className="bg-accent/20 text-accent font-bold text-xs tracking-wider uppercase px-3 py-1 rounded-full mb-4 inline-block">{pricingConfig.maintenancePlans.page.badge}</span>
-            <h2 id="plans-heading" className="text-3xl md:text-5xl font-display font-bold text-white mb-4">{pricingConfig.maintenancePlans.page.heading}</h2>
-            <p className="text-lg text-white/70 max-w-2xl mx-auto">{pricingConfig.maintenancePlans.page.subheading}</p>
-          </AnimatedSection>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            
+            {/* Left — copy + benefits */}
+            <AnimatedSection>
+              <span className="bg-accent/20 text-accent font-bold text-xs tracking-wider uppercase px-3 py-1 rounded-full mb-6 inline-block">
+                {pricingConfig.maintenancePlans.page.badge}
+              </span>
+              <h2 id="plans-heading" className="text-3xl md:text-5xl font-display font-bold text-white mb-6 leading-tight">
+                Never Worry About a Plumbing Bill Again
+              </h2>
+              <p className="text-lg text-white/70 mb-8">{pricingConfig.maintenancePlans.page.subheading}</p>
+              
+              <ul className="space-y-4 mb-10">
+                {[
+                  "Annual whole-home plumbing health check",
+                  "Priority booking — skip the queue",
+                  "Discounted rates on all callout work",
+                  "Instant hot-water & leak alerts",
+                  "Cancel anytime — no lock-in",
+                ].map((benefit, i) => (
+                  <li key={i} className="flex items-center gap-3 text-white/90">
+                    <span className="w-5 h-5 rounded-full bg-accent/20 text-accent flex items-center justify-center text-xs font-bold flex-shrink-0">✓</span>
+                    <span>{benefit}</span>
+                  </li>
+                ))}
+              </ul>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-10">
-            {pricingConfig.maintenancePlans.plans.map((plan, i) => (
-              <AnimatedSection key={plan.id} delay={i * 0.1}>
-                <div className={`relative flex flex-col h-full rounded-2xl p-8 ${plan.highlighted ? "bg-white text-foreground shadow-2xl scale-105" : "bg-white/10 border border-white/20 text-white"}`}>
-                  {plan.highlighted && plan.badge && (
-                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-xs font-bold px-4 py-1 rounded-full shadow">⭐ {plan.badge}</span>
-                  )}
-                  <div className="mb-6">
-                    <div className={`font-display font-bold text-xl mb-3 ${plan.highlighted ? "text-foreground" : "text-white"}`}>{plan.name}</div>
-                    <div className="flex items-baseline gap-2">
-                      <span className={`font-display font-extrabold text-4xl ${plan.highlighted ? "text-foreground" : "text-white"}`}>{plan.price}</span>
-                      <span className={`text-sm ${plan.highlighted ? "text-muted-foreground" : "text-white/60"}`}>{plan.billingCycle}</span>
-                    </div>
-                    {plan.annualNote && (
-                      <p className={`text-xs mt-2 ${plan.highlighted ? "text-muted-foreground" : "text-white/50"}`}>{plan.annualNote}</p>
+              <Button asChild size="lg" className="rounded-full bg-accent hover:bg-accent/90 text-accent-foreground px-8 shadow-btn">
+                <Link href="/plans">See All Plans & Pricing</Link>
+              </Button>
+            </AnimatedSection>
+
+            {/* Right — featured HomeGuard plan card */}
+            {(() => {
+              const homeguard = pricingConfig.maintenancePlans.plans.find(p => p.highlighted) ?? pricingConfig.maintenancePlans.plans[1];
+              return (
+                <AnimatedSection delay={0.15} className="relative">
+                  <div className="absolute -inset-4 bg-accent/10 rounded-3xl blur-2xl" />
+                  <div className="relative bg-white rounded-3xl p-8 shadow-2xl">
+                    {homeguard.badge && (
+                      <span className="absolute -top-4 left-8 bg-accent text-accent-foreground text-xs font-bold px-5 py-1.5 rounded-full shadow-lg">
+                        ⭐ {homeguard.badge}
+                      </span>
                     )}
+                    <div className="mb-6 pt-2">
+                      <p className="text-xs text-muted-foreground font-bold uppercase tracking-wider mb-2">Most Popular</p>
+                      <div className="font-display font-bold text-2xl text-foreground mb-3">{homeguard.name}</div>
+                      <div className="flex items-baseline gap-2">
+                        <span className="font-display font-extrabold text-5xl text-primary">{homeguard.price}</span>
+                        <span className="text-muted-foreground">{homeguard.billingCycle}</span>
+                      </div>
+                      {homeguard.annualNote && (
+                        <p className="text-xs text-muted-foreground mt-2">{homeguard.annualNote}</p>
+                      )}
+                    </div>
+                    <div className="border-t border-border my-6" />
+                    <ul className="space-y-3 mb-8">
+                      {homeguard.features.map((feat, j) => (
+                        <li key={j} className="flex items-start gap-2 text-sm text-foreground">
+                          <span className="text-accent font-bold mt-0.5">✓</span>
+                          {feat}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button asChild className="w-full rounded-full bg-primary hover:bg-primary/90 text-white shadow-btn" size="lg">
+                      <Link href={homeguard.cta.href}>{homeguard.cta.label}</Link>
+                    </Button>
                   </div>
-                  <ul className="flex-1 space-y-3 mb-8">
-                    {plan.features.map((perk, j) => (
-                      <li key={j} className={`flex items-start gap-2 text-sm ${plan.highlighted ? "text-foreground" : "text-white/90"}`}>
-                        <span className="text-accent font-bold mt-0.5">✓</span>
-                        {perk}
-                      </li>
-                    ))}
-                  </ul>
-                  <Button asChild className={`w-full rounded-full ${plan.highlighted ? "bg-primary hover:bg-primary/90 text-white" : "bg-white/10 hover:bg-white/20 text-white border-white/30"}`} variant={plan.highlighted ? "default" : "outline"}>
-                    <Link href={plan.cta.href}>{plan.cta.label}</Link>
-                  </Button>
-                </div>
-              </AnimatedSection>
-            ))}
-          </div>
+                </AnimatedSection>
+              );
+            })()}
 
-          <div className="text-center">
-            <Link href="/plans" className="text-white/70 hover:text-white font-semibold transition-colors underline-offset-4 hover:underline">
-              View All Plans & FAQs →
-            </Link>
           </div>
         </div>
       </section>
