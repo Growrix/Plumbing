@@ -1,0 +1,35 @@
+# dependencies
+node_modules/
+
+# next.js build output
+.next/
+out/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+*.log
+
+# env files
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# editor and OS
+.vscode/
+.DS_Store
+Thumbs.db
+
+# python virtual env (present in this workspace)
+.venv/
+
+# misc
+coverage/
+
+## folder
+DOC
+
