@@ -5,6 +5,7 @@ import { Star } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { servicesConfig } from "@/config/services.config";
 import { testimonialsConfig } from "@/config/testimonials.config";
+import { pricingConfig } from "@/config/pricing.config";
 import { Button } from "@/components/ui/button";
 import { AnimatedSection } from "@/components/shared/AnimatedSection";
 import { ServiceCard } from "@/components/shared/ServiceCard";
@@ -183,6 +184,106 @@ export default function HomePage() {
             <Button asChild variant="outline" size="lg" className="rounded-full">
               <Link href="/reviews">Read All Reviews</Link>
             </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Tiers */}
+      <section className="py-24 bg-secondary" id="pricing" data-testid="pricing-section">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <span className="text-accent font-bold tracking-wider uppercase text-sm mb-2 block">{pricingConfig.page.heading.split(".")[0]}</span>
+            <h2 className="text-3xl md:text-5xl font-display font-bold text-foreground mb-4">{pricingConfig.page.heading}</h2>
+            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">{pricingConfig.page.subheading}</p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+            {pricingConfig.tiers.map((tier, i) => (
+              <AnimatedSection key={tier.id} delay={i * 0.1}>
+                <div className={`relative flex flex-col h-full rounded-2xl border p-8 shadow-sm ${tier.highlighted ? "bg-primary text-white border-accent shadow-lg scale-105" : "bg-card border-border"}`}>
+                  {tier.badge && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-xs font-bold px-4 py-1 rounded-full shadow">{tier.badge}</span>
+                  )}
+                  <div className="mb-6">
+                    <h3 className={`font-display font-bold text-2xl mb-1 ${tier.highlighted ? "text-white" : "text-foreground"}`}>{tier.name}</h3>
+                    <p className={`text-sm mb-4 ${tier.highlighted ? "text-white/70" : "text-muted-foreground"}`}>{tier.tagline}</p>
+                    <div className="flex items-baseline gap-2">
+                      <span className={`font-display font-extrabold text-4xl ${tier.highlighted ? "text-white" : "text-foreground"}`}>{tier.priceFrom}</span>
+                      <span className={`text-sm ${tier.highlighted ? "text-white/60" : "text-muted-foreground"}`}>{tier.priceSuffix}</span>
+                    </div>
+                  </div>
+                  <div className={`border-t mb-6 ${tier.highlighted ? "border-white/20" : "border-border"}`} />
+                  <ul className="flex-1 space-y-3 mb-8">
+                    {tier.includes.map((item) => (
+                      <li key={item} className={`flex items-start gap-2 text-sm ${tier.highlighted ? "text-white/90" : "text-foreground"}`}>
+                        <span className="text-accent mt-0.5 font-bold">✓</span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                  {tier.note && (
+                    <p className={`text-xs text-center mb-4 italic ${tier.highlighted ? "text-white/60" : "text-muted-foreground"}`}>{tier.note}</p>
+                  )}
+                  <Button asChild className={`w-full rounded-full ${tier.highlighted ? "bg-accent hover:bg-accent/90 text-accent-foreground" : ""}`} variant={tier.highlighted ? "default" : "outline"}>
+                    <Link href={tier.cta.href}>{tier.cta.label}</Link>
+                  </Button>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          {pricingConfig.page.disclaimer && (
+            <p className="text-center text-sm text-muted-foreground mt-10">{pricingConfig.page.disclaimer}</p>
+          )}
+        </div>
+      </section>
+
+      {/* Maintenance Plans */}
+      <section className="py-24 bg-primary" aria-labelledby="plans-heading" data-testid="plans-section">
+        <div className="container mx-auto px-4">
+          <AnimatedSection className="text-center mb-16">
+            <span className="bg-accent/20 text-accent font-bold text-xs tracking-wider uppercase px-3 py-1 rounded-full mb-4 inline-block">{pricingConfig.maintenancePlans.page.badge}</span>
+            <h2 id="plans-heading" className="text-3xl md:text-5xl font-display font-bold text-white mb-4">{pricingConfig.maintenancePlans.page.heading}</h2>
+            <p className="text-lg text-white/70 max-w-2xl mx-auto">{pricingConfig.maintenancePlans.page.subheading}</p>
+          </AnimatedSection>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch mb-10">
+            {pricingConfig.maintenancePlans.plans.map((plan, i) => (
+              <AnimatedSection key={plan.id} delay={i * 0.1}>
+                <div className={`relative flex flex-col h-full rounded-2xl p-8 ${plan.highlighted ? "bg-white text-foreground shadow-2xl scale-105" : "bg-white/10 border border-white/20 text-white"}`}>
+                  {plan.highlighted && plan.badge && (
+                    <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-xs font-bold px-4 py-1 rounded-full shadow">⭐ {plan.badge}</span>
+                  )}
+                  <div className="mb-6">
+                    <div className={`font-display font-bold text-xl mb-3 ${plan.highlighted ? "text-foreground" : "text-white"}`}>{plan.name}</div>
+                    <div className="flex items-baseline gap-2">
+                      <span className={`font-display font-extrabold text-4xl ${plan.highlighted ? "text-foreground" : "text-white"}`}>{plan.price}</span>
+                      <span className={`text-sm ${plan.highlighted ? "text-muted-foreground" : "text-white/60"}`}>{plan.billingCycle}</span>
+                    </div>
+                    {plan.annualNote && (
+                      <p className={`text-xs mt-2 ${plan.highlighted ? "text-muted-foreground" : "text-white/50"}`}>{plan.annualNote}</p>
+                    )}
+                  </div>
+                  <ul className="flex-1 space-y-3 mb-8">
+                    {plan.features.map((perk, j) => (
+                      <li key={j} className={`flex items-start gap-2 text-sm ${plan.highlighted ? "text-foreground" : "text-white/90"}`}>
+                        <span className="text-accent font-bold mt-0.5">✓</span>
+                        {perk}
+                      </li>
+                    ))}
+                  </ul>
+                  <Button asChild className={`w-full rounded-full ${plan.highlighted ? "bg-primary hover:bg-primary/90 text-white" : "bg-white/10 hover:bg-white/20 text-white border-white/30"}`} variant={plan.highlighted ? "default" : "outline"}>
+                    <Link href={plan.cta.href}>{plan.cta.label}</Link>
+                  </Button>
+                </div>
+              </AnimatedSection>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/plans" className="text-white/70 hover:text-white font-semibold transition-colors underline-offset-4 hover:underline">
+              View All Plans & FAQs →
+            </Link>
           </div>
         </div>
       </section>
